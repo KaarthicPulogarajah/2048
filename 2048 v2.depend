@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1438877701 source:c:\users\kaarthic\desktop\my stuff\c++ programs\2048 v2\main.cpp
+	<iostream>
+	<conio.h>
+	<cstdlib>
+	<time.h>
+
+1438874102 source:c:\users\kaarthic\desktop\me\new my stuff\c++ programs\2048 v2\main.cpp
+	<iostream>
+	<conio.h>
+	<cstdlib>
+	<time.h>
+
