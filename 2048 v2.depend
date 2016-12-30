@@ -11,3 +11,10 @@
 	<cstdlib>
 	<time.h>
 
+1483124766 source:c:\users\kaarthic\documents\github\2048\main.cpp
+	<iostream>
+	<conio.h>
+	<cstdlib>
+	<time.h>
+	<windows.h>
+

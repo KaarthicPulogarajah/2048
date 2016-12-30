@@ -2,6 +2,11 @@
 #include <conio.h>
 #include <cstdlib>
 #include <time.h>
+#include <windows.h>
+
+
+//initialize colours
+static HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
 using namespace std;
 void print (int a[4][4]);
@@ -9,6 +14,9 @@ int largest (int a[4][4]);
 int check (int a[4][4]);
 int main()
 {
+    //set default text colour to white
+    SetConsoleTextAttribute(h,15);
+
     int large = 0, axe = -1, counter = 0;
     //initialize game
     int game[4][4] = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
@@ -52,6 +60,7 @@ int main()
     cout << "YOU ARE PLAYING 2048\n\nUse W A S D to shift pieces up, left, down, or right, respectively\nYou can press 'p' to exit\n";
     print(game);
     int z = 0;
+
     //move tiles
     char choice;
     do
@@ -293,7 +302,10 @@ int main()
             //print
             print(game);
         }
+        // see if 2048 has been reached
         large = largest(game);
+
+        //check if there are any empty spaces left
         axe = check(game);
         counter++;
     }
@@ -309,6 +321,7 @@ int main()
     return 0;
 }
 
+//print board
 void print (int a[4][4])
 {
     cout << endl;
@@ -316,11 +329,38 @@ void print (int a[4][4])
     for (int i = 0 ; i < 4; i++)
     {
         for (int j = 0 ; j < 4 ; j++)
+        {
+            if(a[i][j]== 2)
+                SetConsoleTextAttribute(h,14);
+            else if(a[i][j]== 4)
+                SetConsoleTextAttribute(h,13);
+            else if(a[i][j]== 8)
+                SetConsoleTextAttribute(h,12);
+            else if(a[i][j]== 16)
+                SetConsoleTextAttribute(h,11);
+            else if(a[i][j]== 32)
+                SetConsoleTextAttribute(h,10);
+            else if(a[i][j]== 64)
+                SetConsoleTextAttribute(h,9);
+            else if(a[i][j]== 128)
+                SetConsoleTextAttribute(h,8);
+            else if(a[i][j]== 256)
+                SetConsoleTextAttribute(h,6);
+            else if(a[i][j]== 512)
+                SetConsoleTextAttribute(h,5);
+            else if(a[i][j]== 1024)
+                SetConsoleTextAttribute(h,4);
+            else if(a[i][j]== 2048)
+                SetConsoleTextAttribute(h,3);
             cout << a[i][j] << "\t";
+            SetConsoleTextAttribute(h,15);
+        }
+
         cout << endl;
     }
 }
 
+//find the largest number in board
 int largest (int a[4][4])
 {
     int big = 0;
@@ -334,6 +374,8 @@ int largest (int a[4][4])
     }
     return big;
 }
+
+//determine if there are any empty spaces leftd
 
 int check (int a[4][4])
 {
